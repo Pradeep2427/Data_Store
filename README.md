@@ -22,58 +22,53 @@ Checks implemented such that Data File does not exceed 1 GB.
 Multiple Client Processes are not allowed to access the same file simultaneously.
 
 Implementation Details :
-
 Approach 1
 
 	Functions Implemented : 
-		app() :
-A global variable stores the directory path. The directory is received  from the user. if not, the default file directory is stored. The directory is checked whether it is a default path or a new path. If the received file name has an extension other than ‘.json’ error message will be thrown. The file name can be without extension. By default it is considered as ‘.json’.
-		
-		file_existing_check():
-	The function checks whether the file exists or not. If it exists it gets permission to access it.
+	app() :
+	''' A global variable stores the directory path. The directory is received  from the user. if not, the default file directory is stored. The directory is checked whether it is a default path or a new path. If the received file name has an extension other than ‘.json’ error message will be thrown. The file name can be without extension. By default it is considered as ‘.json’.'''
+	
+	file_existing_check():
+	''' The function checks whether the file exists or not. If it exists it gets permission to access it.'''
+	
+	load_data():
+	''' The function loads the json objects in the file into a python dictionary and makes it as a global dictionary. '''
 
+	to_check_expiry_objects():
+	''' The function checks the expiry time for the json objects and deletes the expired objects.'''
 
+	file_size_check():
+	''' The function checks whether the file exceeds 1GB of storage.'''
+	
+	action_in_file():
+	''' The function receives what action is to be performed, CRD from the user.'''
+	
+	is_time_expired():
+	''' The function takes the expiry time of the object and compares it with the current time.'''
+	
+	delete_value():
+        ''' The function takes the key of the object and delete it from the global json data variable.'''
+	
+	data_update():
+	''' The function updates the json file, dump the data into the json file.'''
 
-		load_data:
-	The function loads the json objects in the file into a python dictionary and makes it as a global dictionary.
+	getting_key():
+	''' The function receives the key from the user, checks whether the key exceeds 32 characters and whether the key exists in the json file or it got 	   expired.'''
 
-		to_check_expiry_objects():
-	The function checks the expiry time for the json objects and deletes the expired objects.
+	getting_value():
+	''' The function receives the json object and checks if it exceeds 16KB.'''
 
-		file_size_check():
-			The function checks whether the file exceeds 1GB of storage.
+	getting_time():
+	''' The function receives the time to live for the json object to live from the user. If time is not given the objects will be present in the file forever.'''
+	
+	create():
+	''' The function creates the json object in the desired file.'''
+	
+	read():
+	''' The function displays the json object value using the key  and also checks if the key exists in the json file if not it throws a error message.'''
 
-		action_in_file():
-The function receives what action is to be performed, CRD from the user.
-
-is_time_expired():
-The function takes the expiry time of the object and compares it with the current time.
-
-delete_value():
-The function takes the key of the object and delete it from the global json data variable.
-
-data_update():
-The function updates the json file, dump the data into the json file.	
-
-getting_key():
-	The function receives the key from the user, checks whether the key exceeds 32 characters and whether the key exists in the json file or it got expired.
-
-getting_value():
-	The function receives the json object and checks if it exceeds 16KB.
-
-getting_time():
-	The function receives the time to live for the json object to live from the user. If time is not given the objects will be present in the file forever.
-
-create():
-The function creates the json object in the desired file.
-
-
-
-read():
-The function displays the json object value using the key  and also checks if the key exists in the json file if not it throws a error message.
-
-delete():
-	The function deletes the json object using the key and also checks if the key exists in the json file if not it throws a message. 
+	delete():
+	''' The function deletes the json object using the key and also checks if the key exists in the json file if not it throws a message.'''
 
 
 Usage Guide :
@@ -93,7 +88,7 @@ The key is requested, if the json object was expired or the key is not available
 If the key available in the file, the value of the object is displayed.
 For Delete :
 The key is requested, if the key is in the json file then the object is deleted.
- 
+
 Input Requested :
 
 The file name for the action.
@@ -119,3 +114,11 @@ Error Messages Displayed:
 “The value size is exceeding 16kb” - when the value is above 16KB during creation.
 “The key is not matched with any objects” -  When key not found while Reading.
 “File exceeds 1GB storage limit” - when the json file is above 1GB.
+
+
+
+
+
+
+
+		
