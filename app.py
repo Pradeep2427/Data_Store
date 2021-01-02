@@ -48,7 +48,9 @@ def getting_key(call_type):
                     print ("Already exits")
                     return getting_key(call_type)
         except TypeError:
-            return key
+            if call_type == 'create':
+                    print ("Already exits")
+                    return getting_key(call_type)
     return key   
 
 def getting_value():
